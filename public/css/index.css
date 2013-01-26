@@ -1,0 +1,97 @@
+body, p, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: -20px;
+    background: silver url(/img/subtle_grunge.png) fixed;
+    padding-bottom: 160px;
+
+    font-size: 16px;
+    font-family: 'Gafata', sans-serif;
+    line-height: 1.5em;
+}
+
+p, ol, ul {
+    margin-bottom: 1em;
+}
+
+ol, ul {
+    padding-left: 1em;
+    list-style-position: inside;
+}
+
+a {
+    color: darkred;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+header, footer {
+    color: #461E00;
+    color: #3C0F00;
+    font-size: 15px;
+}
+
+#container {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+article {
+    margin: 0 10px;
+    margin-bottom: 80px;
+    border: silver 1px solid;
+    border-top: 0;
+    background: white url(/img/lightpaperfibers.png);
+    padding: 25px 20px;
+    box-shadow: silver 0 0 10px;
+}
+
+.warning header {
+    color: orangered;
+}
+
+.browser-list {
+    margin-bottom: 0px;
+    list-style-type: none;
+}
+
+.browser-list li {
+    display: inline;
+    margin-right: 8px;
+}
+
+.browser-list img {
+    width: 64px;
+    opacity: 0.8;
+    /* for IE >= 8.0 */
+    filter: "alpha(opacity=0.8)";
+}
+
+.browser-list img:hover {
+    /* NOTE: IE supported hover on any element after 7 */
+    width: 64px;
+    opacity: 1;
+    /* for IE >= 4.0 */
+    filter: alpha(opacity=1);
+}
+
+.mosky-pic {
+    float: right;
+    margin: 6px;
+    border: silver 1px solid;
+    border-radius: 3px;
+    padding: 3px;
+    width: 100px;
+    height: 100px;
+}
+
+.mosky-gmail {
+    vertical-align: middle;
+}
