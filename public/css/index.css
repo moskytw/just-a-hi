@@ -32,7 +32,7 @@ a:hover {
     text-decoration: underline;
 }
 
-header, footer {
+.header, .footer {
     color: #461E00;
     color: #3C0F00;
     font-size: 15px;
@@ -43,11 +43,10 @@ header, footer {
     max-width: 500px;
 }
 
-article {
+.article {
     margin: 0 10px;
     margin-bottom: 80px;
     border: silver 1px solid;
-    border-top: 0;
     background: white url(/img/lightpaperfibers.png);
     padding: 25px 20px;
     box-shadow: silver 0 0 10px;
@@ -69,17 +68,6 @@ article {
 
 .browser-list img {
     width: 64px;
-    opacity: 0.8;
-    /* for IE >= 8.0 */
-    filter: "alpha(opacity=0.8)";
-}
-
-.browser-list img:hover {
-    /* NOTE: IE supported hover on any element after 7 */
-    width: 64px;
-    opacity: 1;
-    /* for IE >= 4.0 */
-    filter: alpha(opacity=1);
 }
 
 .mosky-pic {
