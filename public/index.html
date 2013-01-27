@@ -47,16 +47,17 @@
     <![endif]-->
 
     <!-- TODO: Use HTML5 tags on IE 7-8 -->
-    <div class='article'>
+    <div class='article' itemscope itemtype='http://data-vocabulary.org/Person'>
+
         <div class='header'>
-        <p>Hi, <br>I am Mosky!
+            <p>Hi, <br>I am <span itemprop='nickname'>Mosky</span>!
         </div>
 
-        <a title='go to my Facebook' target='_blank' href='https://www.facebook.com/mosky.liu'><img class='mosky-pic' alt="Mosky's Picture" src='https://graph.facebook.com/mosky.liu/picture?width=100&amp;height=100'></a>
+        <a title='go to my Facebook' target='_blank' href='https://www.facebook.com/mosky.liu'><img class='mosky-pic' alt="Mosky's Picture" src='https://graph.facebook.com/mosky.liu/picture?width=100&amp;height=100' itemprop='photo'></a>
 
         <p>Here is no "server not found" anymore!
 
-        <p>My new friends always tell me my site is down, so I think it is necessary to create a page for <a target='_blank' href='http://mosky.tw/'>mosky.tw</a>.</p>
+        <p>My new friends always tell me my site is down, so I think it is necessary to create a page for <a target='_blank' href='http://mosky.tw/' itemprop='url'>mosky.tw</a>.</p>
 
         <p>Uh. Let me explain it. Actually, I just don't have spare time to keep writing articles on my blog, and I don't want to leave a ruin on the Internet, so I closed my blog on 2011-10-12. But I am still using this domain, and have wished I will reopen my blog.
 
@@ -65,7 +66,7 @@
         <p>If you are interesting in me, here is my short bio:
 
         <ol>
-            <li>I am working for <a target='_blank' href='http://www.pinkoi.com'>Pinkoi</a> now.</li>
+            <li>I am working for <a target='_blank' href='http://www.pinkoi.com'><span itemprop='affiliation'>Pinkoi</span></a> now.</li>
             <li>A speaker at <a target='_blank' href='http://pycon.jp'>PyCon.JP</a> 2012</li>
             <li>A speaker at <a target='_blank' href='http://pycon.tw'>PyCon.TW</a> 2012</li>
             <li>2010-2013 A lecturer for <a target='_blank' href='http://www.openfoundry.org/'>OSSF</a>'s Python serial courses</li>
@@ -88,6 +89,12 @@
         <div class='footer'>
             <p>Mosky<br>2013-01-26
         </div>
+
+        <div class='robot'>
+            <span itemprop='name'>Mosky Liu</span>
+            <span itemprop='title'>Python Charmer</span>
+        </div>
+
     </div>
 
     <div class='article'>

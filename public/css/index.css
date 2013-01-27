@@ -52,6 +52,10 @@ a:hover {
     box-shadow: silver 0 0 10px;
 }
 
+.robot {
+    display: none;
+}
+
 .warning header {
     color: orangered;
 }
