@@ -1,0 +1,13 @@
+.mosky-pic {
+    float: right;
+    margin: 6px;
+    border: silver 1px solid;
+    border-radius: 3px;
+    padding: 3px;
+    width: 100px;
+    height: 100px;
+}
+
+.mosky-gmail {
+    vertical-align: middle;
+}
