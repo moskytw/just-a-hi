@@ -1,5 +1,10 @@
-nginx/*
-!nginx/*.tmpl
+/nginx/*
+!/nginx/*.tmpl
 
-uwsgi/*
-!uwsgi/*.tmpl
+/uwsgi/*
+!/uwsgi/*.tmpl
+
+/hi/errors/*
+!/hi/errors/.gitkeep
+
+/secret-key.yaml

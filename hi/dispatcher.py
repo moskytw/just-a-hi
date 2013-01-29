@@ -2,11 +2,15 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, render_template
+import yaml
 
 app = Flask(__name__)
 
-app.debug = True
-app.config['PROPAGATE_EXCEPTIONS'] = False
+with open('config.yaml') as f:
+    app.config.update(yaml.load(f))
+
+with open('secret-key.yaml') as f:
+    app.config.update(yaml.load(f))
 
 @app.errorhandler(404)
 def not_found(error):
