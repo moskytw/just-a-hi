@@ -1,0 +1,10 @@
+uwsgi:
+    socket   : 127.0.0.1:$PORT
+    chdir    : $ROOT
+    pidfile  : %(chdir)/$UWSGI/mosky.tw.pid
+    daemonize: %(chdir)/$UWSGI/mosky.tw.log
+    stats    : %(chdir)/$UWSGI/mosky.tw.socket
+    module   : hi.dispatcher:app
+    master   : yes
+    process  : 2
+    touch-reload: uwsgi

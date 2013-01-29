@@ -1,1 +1,5 @@
-nginx
+nginx/*
+!nginx/*.tmpl
+
+uwsgi/*
+!uwsgi/*.tmpl
