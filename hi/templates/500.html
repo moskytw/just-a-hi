@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>500 Internal Server Error</title>
+{% endblock %}
+
+{% block style %}
+<link href='/css/500.css' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+    <!-- TODO: Use HTML5 tags on IE 7-8 -->
+    <div class='article'>
+
+        <div class='header'>
+            <p>500 Internal Server Error
+        </div>
+
+        <p>Sorry, I am writing something new. I know here has a problem.
+
+        <p>Go back to the <a target='_blank' href='http://mosky.tw/'>mosky.tw</a>.
+
+    </div>
+    {% if traceback is defined %}
+    <div class='article'>
+
+        <div class='header'>
+            <p>Traceback
+        </div>
+
+        <pre>{% for line in traceback %} {{ line }} {% endfor %}</pre>
+
+    </div>
+    {% endif %}
+    {% if request_ is defined %}
+    <div class='article'>
+
+        <div class='header'>
+            <p>request_
+        </div>
+
+        <p> request_.environ['REMOTE_ADDR']
+        <pre>{{ request_.environ['REMOTE_ADDR'] }}</pre>
+
+        <p> request_.method request_.url
+        <pre>{{ request_.method }} {{ request_.url }}</pre>
+
+        <p> request_.is_xhr
+        <pre>{{ request_.is_xhr }}</pre>
+
+        <p> request_.json
+        <pre>{{ request_.json | pprint }}</pre>
+
+        <p> request_.args
+        <pre>{{ request_.args.to_dict(flat=False) | pprint }}</pre>
+
+        <p> request_.form
+        <pre>{{ request_.form.to_dict(flat=False) | pprint }}</pre>
+
+        <p> request_.cookies
+        <pre>{{ request_.cookies | pprint }}</pre>
+
+        <p> request_.files
+        <pre>{{ request_.files.to_dict(flat=False) | pprint }}</pre>
+
+        <p> request_.environ
+        <pre>{{ request_.environ | pprint }}</pre>
+
+    </div>
+    {% endif %}
+    {% if other is defined %}
+    <div class='article'>
+
+        <div class='header'>
+            <p>Other
+        </div>
+
+        <p>It occursed at <time>{{other.occursed_at}}</time>.
+        <p>This page is saved at <code>{{other.saved_path}}</code>.
+
+    </div>
+    {% endif %}
+{% endblock %}
