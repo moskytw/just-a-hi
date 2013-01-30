@@ -45,7 +45,7 @@ def internal_server_error(error):
     from traceback import format_exception
 
     dumped_text = render_template(
-            '500.html',
+        '500.html',
         traceback = format_exception(*exc_info()),
         request_  = request,
         other     = other
