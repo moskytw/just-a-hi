@@ -12,6 +12,25 @@ with open('config.yaml') as f:
 with open('secret-key.yaml') as f:
     app.config.update(yaml.load(f))
 
+import logging
+from logging import Formatter, FileHandler
+
+file_handler = FileHandler('log/mosky.tw.log')
+app.logger.addHandler(file_handler)
+file_handler.setFormatter(Formatter(
+    '%(asctime)s %(levelname)s %(pathname)s:%(lineno)d %(message)s'
+))
+
+if app.debug:
+    file_handler.setLevel(logging.DEBUG)
+else:
+    file_handler.setLevel(logging.WARNING)
+
+    #from logging.handlers import SMTPHandler
+    #smtp_handler = SMTPHandler('127.0.0.1', 'sys@mosky.tw', ['mosky.tw@gmail.com'], 'test')
+    #smtp_handler.setLevel(logging.DEBUG)
+    #app.logger.addHandler(smtp_handler)
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
@@ -70,3 +89,8 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/log/<msg>')
+def log(msg):
+    app.logger.debug(msg)
+    return msg
