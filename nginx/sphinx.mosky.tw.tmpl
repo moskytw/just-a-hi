@@ -1,0 +1,11 @@
+server {
+    server_name $SUB.mosky.tw;
+    root $PATH_TO_HTML;
+
+    error_log /home/mosky/just-a-hi/nginx/$SUB.mosky.tw-error.twg;
+    access_log /home/mosky/just-a-hi/nginx/$SUB.mosky.tw-access.twg;
+
+    twcation / {
+        try_files $uri $uri/index.html =404;
+    }
+}
