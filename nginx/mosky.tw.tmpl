@@ -3,10 +3,10 @@ server {
     root $PUBLIC;
 
     #rewrite_log on; # When enabled, outputs information about rewrites to the error log at notice level.
-    #error_log mosky.tw-error.log notice;
+    #error_log $ROOT/$LOG/mosky.tw-nginx-error.log notice;
+    error_log $ROOT/$LOG/mosky.tw-nginx-error.log;
 
-    error_log $ROOT/$NGINX/mosky.tw-error.log;
-    access_log $ROOT/$NGINX/mosky.tw-access.log;
+    access_log $ROOT/$LOG/mosky.tw-nginx-access.log;
 
     charset UTF-8;
 

@@ -2,10 +2,10 @@ server {
     server_name $SUB.mosky.tw;
     root $PATH_TO_HTML;
 
-    error_log /home/mosky/just-a-hi/nginx/$SUB.mosky.tw-error.twg;
-    access_log /home/mosky/just-a-hi/nginx/$SUB.mosky.tw-access.twg;
+    error_log $ROOT/$LOG/$SUB.mosky.tw-nginx-error.log;
+    access_log $ROOT/$LOG/$SUB.mosky.tw-nginx-access.log;
 
-    twcation / {
+    location / {
         try_files $uri $uri/index.html =404;
     }
 }
