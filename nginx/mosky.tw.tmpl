@@ -1,14 +1,17 @@
 server {
+
     server_name mosky.tw www.mosky.tw;
-    root $PUBLIC;
+    root $ROOT/$PUBLIC;
 
     #rewrite_log on; # When enabled, outputs information about rewrites to the error log at notice level.
-    #error_log $ROOT/$LOG/mosky.tw-nginx-error.log notice;
     error_log $ROOT/$LOG/mosky.tw-nginx-error.log;
 
+    #error_log $ROOT/$LOG/mosky.tw-nginx-error.log notice;
     access_log $ROOT/$LOG/mosky.tw-nginx-access.log;
 
     charset UTF-8;
+
+    error_page 404 /404;
 
     if ($uri ~ ^/([^/]+)\.(png|jpg|gif|ico|js|css|html|json)$) {
         rewrite \.(png|jpg|gif|ico)$ /img$uri break;
@@ -16,7 +19,7 @@ server {
     }
 
     location ~ ^/(img|js|css|html|json)/ {
-        try_files $uri /404.html;
+        try_files $uri =404;
     }
 
     # pass to uwsgi in any other case
@@ -24,4 +27,5 @@ server {
         include uwsgi_params;
         uwsgi_pass 127.0.0.1:$PORT;
     }
+
 }

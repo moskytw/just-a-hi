@@ -32,7 +32,8 @@ else:
     #app.logger.addHandler(smtp_handler)
 
 @app.errorhandler(404)
-def not_found(error):
+@app.route('/404')
+def not_found(error=None):
     return render_template('404.html'), 404
 
 @app.errorhandler(500)
