@@ -6,10 +6,10 @@ import yaml
 
 app = Flask(__name__)
 
-with open('config.yaml') as f:
+with open('flask/app.yaml') as f:
     app.config.update(yaml.load(f))
 
-with open('secret-key.yaml') as f:
+with open('flask/secret-key.yaml') as f:
     app.config.update(yaml.load(f))
 
 import logging

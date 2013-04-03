@@ -10,4 +10,4 @@
 /log/*
 !/log/.gitkeep
 
-/secret-key.yaml
+/flask/secret-key.yaml
