@@ -15,7 +15,7 @@ with open('flask/secret-key.yaml') as f:
 import logging
 from logging import Formatter, FileHandler
 
-file_handler = FileHandler('log/mosky.tw-app.log')
+file_handler = FileHandler('log/%s-flask.log' % __name__)
 app.logger.addHandler(file_handler)
 file_handler.setFormatter(Formatter(
     '%(asctime)s %(levelname)s %(pathname)s:%(lineno)d %(message)s'
