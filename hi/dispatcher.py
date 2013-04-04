@@ -41,43 +41,27 @@ def internal_server_error(error):
 
     from datetime import datetime
 
-    saved_path = None
-    occursed_at = datetime.now()
-
-    if not app.debug:
-        from os.path import dirname, join
-        saved_path = join(
-            dirname(__file__),
-            'errors',
-            '%s-%s-%s-%s.html' % (
-                occursed_at.isoformat(),
-                type(error).__name__.lower(),
-                error.message,
-                request.environ['REMOTE_ADDR'])
-        )
-
     other = {
-        'occursed_at': occursed_at,
-        'saved_path' : saved_path,
+        'occursed_at': datetime.now(),
     }
 
     from sys import exc_info
     from traceback import format_exception
 
-    dumped_text = render_template(
+    if app.debug:
+        return render_template(
             '500.html',
-        traceback = format_exception(*exc_info()),
-        request_  = request,
-        other     = other
-    )
-
-    if saved_path:
-        # TODO: the error viewer, and send a mail here
-        with open(saved_path, 'w') as f:
-            f.write(dumped_text)
-        return render_template('500.html'), 500
+            traceback = format_exception(*exc_info()),
+            other     = other
+        ), 500
     else:
-        return dumped_text, 500
+        from . import mail
+        app.logger.error('sent a mail for 500, return: %r' % mail.send(app.config['ADMIN_EMAILS'], '500 Internal Server Error', render_template(
+            'mail_500.md',
+            traceback = format_exception(*exc_info()),
+            other     = other
+        )))
+        return render_template('500.html'), 500
 
 @app.route('/test500')
 def make_error():

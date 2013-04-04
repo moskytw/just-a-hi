@@ -21,6 +21,7 @@
         <p>Go back to the <a href='/'>mosky.tw</a>.
 
     </div>
+
     {% if traceback is defined %}
     <div class='article'>
 
@@ -32,42 +33,54 @@
 
     </div>
     {% endif %}
-    {% if request_ is defined %}
+
+    {% if config.DEBUG %}
     <div class='article'>
 
         <div class='header'>
-            <p>request_
+            <p>Session
         </div>
 
-        <p> request_.environ['REMOTE_ADDR']
-        <pre>{{ request_.environ['REMOTE_ADDR'] }}</pre>
+        <pre>{{ session }}</pre>
 
-        <p> request_.method request_.url
-        <pre>{{ request_.method }} {{ request_.url }}</pre>
+    </div>
 
-        <p> request_.is_xhr
-        <pre>{{ request_.is_xhr }}</pre>
+    <div class='article'>
 
-        <p> request_.json
-        <pre>{{ request_.json | pprint }}</pre>
+        <div class='header'>
+            <p>request
+        </div>
 
-        <p> request_.args
-        <pre>{{ request_.args.to_dict(flat=False) | pprint }}</pre>
+        <p> request.environ['REMOTE_ADDR']
+        <pre>{{ request.environ['REMOTE_ADDR'] }}</pre>
 
-        <p> request_.form
-        <pre>{{ request_.form.to_dict(flat=False) | pprint }}</pre>
+        <p> request.method request.url
+        <pre>{{ request.method }} {{ request.url }}</pre>
 
-        <p> request_.cookies
-        <pre>{{ request_.cookies | pprint }}</pre>
+        <p> request.is_xhr
+        <pre>{{ request.is_xhr }}</pre>
 
-        <p> request_.files
-        <pre>{{ request_.files.to_dict(flat=False) | pprint }}</pre>
+        <p> request.json
+        <pre>{{ request.json | pprint }}</pre>
 
-        <p> request_.environ
-        <pre>{{ request_.environ | pprint }}</pre>
+        <p> request.args
+        <pre>{{ request.args.to_dict(flat=False) | pprint }}</pre>
+
+        <p> request.form
+        <pre>{{ request.form.to_dict(flat=False) | pprint }}</pre>
+
+        <p> request.cookies
+        <pre>{{ request.cookies | pprint }}</pre>
+
+        <p> request.files
+        <pre>{{ request.files.to_dict(flat=False) | pprint }}</pre>
+
+        <p> request.environ
+        <pre>{{ request.environ | pprint }}</pre>
 
     </div>
     {% endif %}
+
     {% if other is defined %}
     <div class='article'>
 
@@ -76,7 +89,6 @@
         </div>
 
         <p>It occursed at <time>{{other.occursed_at}}</time>.
-        <p>This page is saved at <code>{{other.saved_path}}</code>.
 
     </div>
     {% endif %}
