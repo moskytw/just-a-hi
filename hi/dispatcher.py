@@ -26,11 +26,6 @@ if app.debug:
 else:
     file_handler.setLevel(logging.WARNING)
 
-    #from logging.handlers import SMTPHandler
-    #smtp_handler = SMTPHandler('127.0.0.1', 'sys@mosky.tw', ['mosky.tw@gmail.com'], 'test')
-    #smtp_handler.setLevel(logging.DEBUG)
-    #app.logger.addHandler(smtp_handler)
-
 @app.errorhandler(404)
 @app.route('/404')
 def not_found(error=None):
