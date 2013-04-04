@@ -9,6 +9,9 @@ smtp_server = smtplib.SMTP('localhost')
 
 def send(to, subject, body, from_=None):
 
+    if not to:
+        return {}
+
     global default_from
     global smtp_server
 
