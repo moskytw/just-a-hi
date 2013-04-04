@@ -4,6 +4,9 @@ server {
 
     location ^~ /$SUB {
 
+        # /dev       -> /
+        # /dev/      -> /
+        # /dev/about -> /about
         rewrite /$SUB/?(.*) /$1;
 
         charset UTF-8;
@@ -17,6 +20,8 @@ server {
         root $ROOT/$PUBLIC;
         error_page 404 /404;
 
+        # firefox.png -> /img/firefox.png
+        # jquery.js   -> /js/jquery.js
         if ($uri ~ ^/([^/]+)\.(png|jpg|gif|ico|js|css|html|json)$) {
             rewrite \.(png|jpg|gif|ico)$ /img$uri break;
             rewrite \.(js|css|html|json)$ /$1$uri break;
