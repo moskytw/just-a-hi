@@ -58,10 +58,6 @@ def internal_server_error(error):
         )))
         return render_template('500.html'), 500
 
-@app.route('/test500')
-def make_error():
-    raise Exception('A fake exception')
-
 @app.route('/')
 def index():
     return about()
@@ -70,7 +66,11 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/log/<msg>')
+@app.route('/test_500')
+def make_error():
+    raise Exception('A fake exception')
+
+@app.route('/test_log/<msg>')
 def log(msg):
     app.logger.debug(msg)
     return msg
