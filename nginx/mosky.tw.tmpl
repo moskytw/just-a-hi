@@ -18,7 +18,6 @@ server {
         error_log $ROOT/$LOG/error.log;
 
         root $ROOT/$PUBLIC;
-        error_page 404 /404;
 
         # firefox.png -> /img/firefox.png
         # jquery.js   -> /js/jquery.js
@@ -28,6 +27,7 @@ server {
         }
 
         location ~ ^/(img|js|css|html|json)/ {
+            error_page 404 /404;
             try_files $uri =404;
         }
 
