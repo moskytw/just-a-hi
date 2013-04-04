@@ -4,7 +4,11 @@
 /uwsgi/*
 !/uwsgi/*.tmpl
 
+/flask/*
+!/flask/*.tmpl
+
 /hi/errors/*
 !/hi/errors/.gitkeep
 
-/secret-key.yaml
+/log/*
+!/log/.gitkeep

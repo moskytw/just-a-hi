@@ -1,0 +1,11 @@
+server {
+    server_name $PROJECT.mosky.lo;
+    root $HTML;
+
+    error_log $ROOT/$NGINX/$PROJECT.mosky.tw-error.log;
+    access_log $ROOT/$NGINX/$PROJECT.mosky.tw-access.log;
+
+    location / {
+        try_files $uri $uri/index.html =404;
+    }
+}

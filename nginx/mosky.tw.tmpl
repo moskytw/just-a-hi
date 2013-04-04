@@ -1,27 +1,43 @@
 server {
+
     server_name mosky.tw www.mosky.tw;
-    root $PUBLIC;
 
-    #rewrite_log on; # When enabled, outputs information about rewrites to the error log at notice level.
-    #error_log mosky.tw-error.log notice;
+    location ^~ /$SUB {
 
-    error_log $ROOT/$NGINX/mosky.tw-error.log;
-    access_log $ROOT/$NGINX/mosky.tw-access.log;
+        # /dev       -> /
+        # /dev/      -> /
+        # /dev/about -> /about
+        rewrite /$SUB/?(.*) /$1;
 
-    charset UTF-8;
+        charset UTF-8;
 
-    if ($uri ~ ^/([^/]+)\.(png|jpg|gif|ico|js|css|html|json)$) {
-        rewrite \.(png|jpg|gif|ico)$ /img$uri break;
-        rewrite \.(js|css|html|json)$ /$1$uri break;
-    }
+        access_log $ROOT/$LOG/access.log;
 
-    location ~ ^/(img|js|css|html|json)/ {
-        try_files $uri /404.html;
-    }
+        #rewrite_log on; # When enabled, outputs information about rewrites to the error log at notice level.
+        #error_log $ROOT/$LOG/error.log notice;
+        error_log $ROOT/$LOG/error.log;
 
-    # pass to uwsgi in any other case
-    location / {
+        root $ROOT/$PUBLIC;
+
+        # firefox.png -> /img/firefox.png
+        # jquery.js   -> /js/jquery.js
+        if ($uri ~ ^/([^/]+)\.(png|jpg|gif|ico|js|css|html|json)$) {
+            rewrite \.(png|jpg|gif|ico)$ /img$uri break;
+            rewrite \.(js|css|html|json)$ /$1$uri break;
+        }
+
+        location ~ ^/(img|js|css|html|json)/ {
+            error_page 404 /404;
+            try_files $uri =404;
+        }
+
+        #location ^~ /test_ {
+        #    error_page 404 /404;
+        #    return 404;
+        #}
+
         include uwsgi_params;
         uwsgi_pass 127.0.0.1:$PORT;
     }
+
 }
