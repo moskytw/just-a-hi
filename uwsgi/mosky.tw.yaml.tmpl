@@ -3,7 +3,7 @@ uwsgi:
     chdir    : $ROOT
     pidfile  : %(chdir)/$UWSGI/mosky.tw.pid
     stats    : %(chdir)/$UWSGI/mosky.tw.socket
-    daemonize: %(chdir)/$LOG/mosky.tw-uwsgi.log
+    daemonize: %(chdir)/$LOG/uwsgi.log
     module   : hi.dispatcher:app
     master   : yes
     process  : 2

@@ -8,11 +8,11 @@ server {
 
         charset UTF-8;
 
-        access_log $ROOT/$LOG/mosky.tw-nginx-access.log;
+        access_log $ROOT/$LOG/access.log;
 
         #rewrite_log on; # When enabled, outputs information about rewrites to the error log at notice level.
-        #error_log $ROOT/$LOG/mosky.tw-nginx-error.log notice;
-        error_log $ROOT/$LOG/mosky.tw-nginx-error.log;
+        #error_log $ROOT/$LOG/error.log notice;
+        error_log $ROOT/$LOG/error.log;
 
         root $ROOT/$PUBLIC;
         error_page 404 /404;
