@@ -80,6 +80,11 @@ def person():
     from .model import Person
     return str(list(Person.seek(request.args)))
 
+@app.route('/mysql_person/')
+def mysql_person():
+    from .mysql_model import Person
+    return str(list(Person.seek(request.args)))
+
 @app.route('/unsafe_person/')
 def unsafe_person():
     from .model import Person
