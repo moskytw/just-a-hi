@@ -5,7 +5,7 @@ import psycopg2.pool
 from mosql.result import Model
 
 class PostgreSQLModel(Model):
-    pool = psycopg2.pool.PersistentConnectionPool(1, 5, database='mosky')
+    pool = psycopg2.pool.PersistentConnectionPool(10, 100, database='mosky')
     dump_sql = True
 
 class Person(PostgreSQLModel):
