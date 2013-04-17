@@ -74,3 +74,8 @@ def make_error():
 def log(msg):
     app.logger.debug(msg)
     return msg
+
+@app.route('/person/')
+def person():
+    from .model import Person
+    return str(list(Person.seek(request.args)))
