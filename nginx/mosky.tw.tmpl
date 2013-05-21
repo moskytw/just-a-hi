@@ -1,39 +1,35 @@
 server {
 
-    server_name $DOMAIN;
+    server_name $DOMAIN_NAME;
+
+    access_log $ROOT/$LOG/access.log;
+    error_log $ROOT/$LOG/error.log;
+
+    # if debuging rewrite rule
+    #rewrite_log on; # When enabled, outputs information about rewrites to the error log at notice level.
+    #error_log $ROOT/$LOG/error.log notice;
 
     charset UTF-8;
 
     error_page 404 /404;
 
-    set $root $PROD_ROOT;
-    set $uwsgi_port $PROD_UWSGI_PORT;
+    root $ROOT/$PUBLIC;
 
-    location ^~ /$DEV {
+    location ~ ^/(img|js|css|html|json)/ {
+        try_files $uri =404;
+    }
 
-        set $root $DEV_ROOT;
-        set $uwsgi_port $DEV_UWSGI_PORT;
+    location ~ \.(png|jpg|gif|ico)$ {
+        try_files /img$uri =404;
+    }
 
-        rewrite /$DEV/?(.*) /$1;
+    location ~ \.(js|css|html|json)$ {
+        try_files /$1$uri =404;
     }
 
     location / {
-
-        root $root;
-
-        location ~ ^/(img|js|css|html|json)/ {
-            try_files $uri =404;
-        }
-
-        location ~ \.(png|jpg|gif|ico)$ {
-            try_files /img$uri =404;
-        }
-
-        location ~ \.(js|css|html|json)$ {
-            try_files /$1$uri =404;
-        }
-
         include uwsgi_params;
-        uwsgi_pass 127.0.0.1:$uwsgi_port;
+        # the default port of uwsgi is 3031
+        uwsgi_pass 127.0.0.1:$PORT;
     }
 }
