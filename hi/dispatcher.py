@@ -88,8 +88,8 @@ def mysql_person():
     from .mysql_model import Person
     return str(list(Person.seek(request.args)))
 
-@app.route('/unsafe_person/')
-def unsafe_person():
-    from .model import Person
-    sql_tmpl = "select * from person where person_id='%s'"
-    return str(Person.run(sql_tmpl % request.args.get('person_id')).fetchall())
+#@app.route('/unsafe_person/')
+#def unsafe_person():
+#    from .model import Person
+#    sql_tmpl = "select * from person where person_id='%s'"
+#    return str(Person.run(sql_tmpl % request.args.get('person_id')).fetchall())
