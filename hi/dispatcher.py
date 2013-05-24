@@ -78,15 +78,17 @@ def log(msg):
     app.logger.debug(msg)
     return msg
 
+from mosql import json
+
 @app.route('/person/')
 def person():
     from .model import Person
-    return str(list(Person.seek(request.args)))
+    return json.dumps(Person.arrange(request.args))
 
 @app.route('/mysql_person/')
 def mysql_person():
     from .mysql_model import Person
-    return str(list(Person.seek(request.args)))
+    return json.dumps(Person.arrange(request.args))
 
 #@app.route('/unsafe_person/')
 #def unsafe_person():
