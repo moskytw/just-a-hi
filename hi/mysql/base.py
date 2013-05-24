@@ -10,7 +10,7 @@ import mosql.mysql
 
 try:
     import sqlalchemy.pool
-    MySQLdb = sqlalchemy.pool.manage(MySQLdb, pool_size=5)
+    MySQLdb = sqlalchemy.pool.manage(MySQLdb, pool_size=100)
 except ImportError:
     pass
 

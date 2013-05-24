@@ -4,7 +4,7 @@
 import psycopg2.pool
 from mosql.result import Model
 
-pool = psycopg2.pool.SimpleConnectionPool(1, 5, database='mosky')
+pool = psycopg2.pool.SimpleConnectionPool(1, 100, database='mosky')
 
 class PostgreSQL(Model):
 
