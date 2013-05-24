@@ -5,7 +5,7 @@ body, p, ol, ul {
 
 body {
     margin-top: -20px;
-    background: silver url(/img/subtle_grunge.png) fixed;
+    background: silver url(/img/subtle-grunge.png) fixed;
     padding-bottom: 160px;
 
     font-size: 16px;

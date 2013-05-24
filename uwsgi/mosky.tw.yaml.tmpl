@@ -6,5 +6,5 @@ uwsgi:
     daemonize: %(chdir)/$LOG/uwsgi.log
     module   : hi.dispatcher:app
     master   : yes
-    process  : 2
+    processes: 2
     touch-reload: uwsgi

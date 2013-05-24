@@ -51,11 +51,14 @@ def internal_server_error(error):
         ), 500
     else:
         from . import mail
-        app.logger.error('sent a mail for 500, return: %r' % mail.send(app.config['ADMIN_EMAILS'], '500 Internal Server Error', render_template(
-            'mail_500.md',
-            traceback = format_exception(*exc_info()),
-            other     = other
-        )))
+        app.logger.error(
+            'sent a mail for 500, mail.send returns: %r' %
+            mail.send(app.config['ADMIN_EMAILS'], '500 Internal Server Error', render_template(
+                'mail_500.md',
+                traceback = format_exception(*exc_info()),
+                other     = other
+            ))
+        )
         return render_template('500.html'), 500
 
 @app.route('/')
