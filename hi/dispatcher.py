@@ -82,16 +82,14 @@ from mosql import json
 
 @app.route('/person/')
 def person():
-    from .model import Person
-    return json.dumps(Person.arrange(request.args))
 
-@app.route('/mysql_person/')
-def mysql_person():
-    from .mysql_model import Person
-    return json.dumps(Person.arrange(request.args))
+    #from .mysql.person import Person
+    from .postgresql.person import Person
 
-#@app.route('/unsafe_person/')
-#def unsafe_person():
-#    from .model import Person
-#    sql_tmpl = "select * from person where person_id='%s'"
-#    return str(Person.run(sql_tmpl % request.args.get('person_id')).fetchall())
+    select = None
+    where = request.args.copy()
+    if '_select' in where:
+        select = where.getlist('_select')
+        del where['_select']
+
+    return json.dumps(list(Person.arrange(where=where, select=select)))
