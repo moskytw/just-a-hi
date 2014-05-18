@@ -9,8 +9,8 @@ app = Flask(__name__)
 with open('flask/app.yaml') as f:
     app.config.update(yaml.load(f))
 
-with open('flask/secret-key.yaml') as f:
-    app.config.update(yaml.load(f))
+#with open('flask/secret-key.yaml') as f:
+#    app.config.update(yaml.load(f))
 
 import logging
 from logging import Formatter, FileHandler
