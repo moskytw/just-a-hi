@@ -9,8 +9,6 @@
 /flask/*
 !/flask/*.tmpl
 
-/hi/errors/*
-!/hi/errors/.gitkeep
 
 /log/*
 !/log/.gitkeep

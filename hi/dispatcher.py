@@ -9,9 +9,6 @@ app = Flask(__name__)
 with open('flask/app.yaml') as f:
     app.config.update(yaml.load(f))
 
-#with open('flask/secret-key.yaml') as f:
-#    app.config.update(yaml.load(f))
-
 import logging
 from logging import Formatter, FileHandler
 
@@ -50,30 +47,12 @@ def internal_server_error(error):
             other     = other
         ), 500
     else:
-        from . import mail
-        app.logger.error(
-            'sent a mail for 500, mail.send returns: %r' %
-            mail.send(app.config['ADMIN_EMAILS'], '500 Internal Server Error', render_template(
-                'mail_500.md',
-                traceback = format_exception(*exc_info()),
-                other     = other
-            ))
-        )
         return render_template('500.html'), 500
 
 @app.route('/')
 def index():
-    return about()
-
-@app.route('/about')
-def about():
     return render_template('about.html')
 
 @app.route('/test_500')
 def make_error():
     raise Exception('A fake exception')
-
-@app.route('/test_log/<msg>')
-def log(msg):
-    app.logger.debug(msg)
-    return msg
