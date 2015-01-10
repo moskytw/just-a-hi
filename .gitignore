@@ -6,9 +6,8 @@
 /uwsgi/*
 !/uwsgi/*.tmpl
 
-/flask/*
-!/flask/*.tmpl
-
+/hi/config/*
+!/hi/config/*.tmpl
 
 /log/*
 !/log/.gitkeep

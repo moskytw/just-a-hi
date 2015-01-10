@@ -6,7 +6,7 @@ import yaml
 
 app = Flask(__name__)
 
-with open('flask/app.yaml') as f:
+with open('hi/config/flask.yaml') as f:
     app.config.update(yaml.load(f))
 
 import logging
